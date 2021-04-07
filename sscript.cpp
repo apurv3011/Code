@@ -19,51 +19,45 @@ using namespace std;
 #define w(x)            int x; cin>>x; while(x--)
 #define FIO             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-class Graph{
-public:
-    std::map<int, list<int>> adjList;
-    int t;
-    
-    Graph(){
+bool solve(string &str  ,int n , int k){
 
+  int count = 0 , mxcnt = -434;
+  for(int i = 0; i < n;i++)
+  {
+     count = 0;
+    if(str[i] == '*'){
+
+      while(i < n && str[i] == '*') count++ , i++;
     }
-
-    void AddEdge(int u , int v , bool bidir = false){
-        adjList[u].push_back(v);
-        if(bidir == true){
-            adjList[v].push_back(u);
-        }
+    if(count == k){
+     return true;
     }
+  }
 
-    
-};
+  return false;
+
+
+}
 int32_t main()
 {
+    
+
     FIO;
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
 
+  w(x){
+    int n , k;
+    cin>>n>>k;
+    string str;
+    cin>>str;
 
-    w(x){
-        int h ,p;
-        cin>>h>>p;
+cout<<(solve(str , n , k)== true ? "YES":"NO")<<endl;
+  }
 
-        while(h >= 0 || p >= 0){
-
-            h = h - p;
-            p = p/2;
-
-            if(h <= 0){
-                cout<<"1"<<endl;
-                break;
-            }else if(p <= 0){
-                cout<<"0"<<endl;
-                break;
-            }
-        }
-    }
+  
 
 
 
