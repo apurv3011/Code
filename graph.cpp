@@ -1,33 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Graph{
-public:
-	std::map<int, list<int>> adjList;
-	Graph(){
-
-	}
-
-	void AddEdge(int u , int v , bool bidir = false){
-		adjList[u].push_back(v);
-		if(bidir == true){
-			adjList[v].push_back(u);
-		}
-	}
-
-	void printGraph(){
-		for (pair<int , list<int>> row : adjList)
-		{
-			int key = row.first;
-			cout<<key<<"->";
-			for (auto elemnt : row.second)
-			 {
-			 	cout<<elemnt<<" ";
-			 } cout<<endl;
-			/* code */
-		}
-	}
-};
+void addEdge(vector <pair<int, int> > adj[], int u, 
+                                     int v, int wt) 
+{ 
+    adj[u].push_back(make_pair(v, wt)); 
+    adj[v].push_back(make_pair(u, wt)); 
+} 
+  
+// Print adjacency list representaion ot graph 
+void printGraph(vector<pair<int,int> > adj[], int V) 
+{ 
+    int v, w; 
+    for (int u = 0; u < V; u++) 
+    { 
+        cout << "Node " << u << " makes an edge with \n"; 
+        for (auto it = adj[u].begin(); it!=adj[u].end(); it++) 
+        { 
+            v = it->first; 
+            w = it->second; 
+            cout << "\tNode " << v << " with edge weight ="
+                 << w << "\n"; 
+        } 
+        cout << "\n"; 
+    } 
+} 
+  
 int main(int argc, char const *argv[])
 {
 	Graph g;

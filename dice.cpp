@@ -19,24 +19,28 @@ using namespace std;
 #define w(x)            int x; cin>>x; while(x--)
 #define FIO             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-class Graph{
-public:
-    std::map<int, list<int>> adjList;
-    int t;
-    
-    Graph(){
-
-    }
-
-    void AddEdge(int u , int v , bool bidir = false){
-        adjList[u].push_back(v);
-        if(bidir == true){
-            adjList[v].push_back(u);
+int solve(int n){
+  std::vector<int> v = {0 , 20 , 18 , 15 , 11 , 6 , 0 };
+   if(n <= 4){
+        if(n == 1)
+        {
+          // v[1] = 20;
+          return 20;
+          
+        }else if(n == 2){
+          // v[2] = 18;
+          return 2 * v[2];
         }
-    }
+        else if(n == 3){
+          // v[3] = 15;
+          return 2 * v[2] + 15;
+          }else if(n == 4){
+            return 4 * v[3];
+          }
 
-    
-};
+    }
+}
+
 int32_t main()
 {
     FIO;
@@ -47,22 +51,9 @@ int32_t main()
 
 
     w(x){
-        int h ,p;
-        cin>>h>>p;
-
-        while(h >= 0 || p >= 0){
-
-            h = h - p;
-            p = p/2;
-
-            if(h <= 0){
-                cout<<"1"<<endl;
-                break;
-            }else if(p <= 0){
-                cout<<"0"<<endl;
-                break;
-            }
-        }
+       int n;
+       cin>>n;
+       cout<<solve(n)<<endl;
     }
 
 
